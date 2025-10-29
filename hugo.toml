@@ -81,8 +81,8 @@ pagination.pagerSize = 5
         [[languages.en.menu.main]]
           identifier = "about"
           name = "About"
-          url = "/about"
+          url = "/about/about"
         [[languages.en.menu.main]]
           identifier = "labs"
           name = "Labs"
-          url = "/labs"
+          url = "/labs/labs"
