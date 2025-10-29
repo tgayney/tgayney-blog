@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/about/</loc>
+    <loc>/posts/about/about/</loc>
   </url><url>
-    <loc>/posts/labs/</loc>
+    <loc>/posts/labs/labs/</loc>
   </url><url>
     <loc>/posts/lisp/</loc>
   </url><url>
