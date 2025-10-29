@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>/posts/apache/</loc>
+    <loc>/posts/about/</loc>
+  </url><url>
+    <loc>/posts/labs/</loc>
+  </url><url>
+    <loc>/posts/lisp/</loc>
   </url><url>
     <loc>/categories/</loc>
   </url><url>
