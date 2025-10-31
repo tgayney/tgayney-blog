@@ -26,7 +26,7 @@
       <link>/posts/lisp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/posts/lisp/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Locator/ID Separation Protocol (LISP)&lt;/strong&gt; is a protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using &lt;strong&gt;Endpoint Identifiers (EIDs)&lt;/strong&gt;. Traffic then enters and exits the network through &lt;strong&gt;Routing Locators (RLOCs)&lt;/strong&gt;. LISP provides benefits such as &lt;strong&gt;simplified traffic engineering&lt;/strong&gt;, &lt;strong&gt;multihoming&lt;/strong&gt;, and &lt;strong&gt;mobility support&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;lisp-overview&#34;&gt;LISP Overview&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ingress-load-balancing&#34;&gt;Ingress Load Balancing&lt;/h2&gt;&#xA;&lt;h2 id=&#34;lisp-to-non-lisp&#34;&gt;LISP to Non-LISP&lt;/h2&gt;</description>
+      <description>&lt;p&gt;Advantages and benefits LISP provides highlighted in this post are &lt;strong&gt;simplified traffic engineering&lt;/strong&gt;, &lt;strong&gt;multihoming&lt;/strong&gt;, &lt;strong&gt;overlay tunnel&lt;/strong&gt;, and &lt;strong&gt;AF over AF&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Locator/ID Separation Protocol (LISP)&lt;/strong&gt; is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using &lt;strong&gt;Endpoint Identifiers (EIDs)&lt;/strong&gt;. Traffic then enters and exits the network through &lt;strong&gt;Routing Locators (RLOCs)&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

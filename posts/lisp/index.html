@@ -6,8 +6,9 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Locator/ID Separation Protocol (LISP) is a protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using Endpoint Identifiers (EIDs). Traffic then enters and exits the network through Routing Locators (RLOCs). LISP provides benefits such as simplified traffic engineering, multihoming, and mobility support.
-LISP Overview Ingress Load Balancing LISP to Non-LISP" />
+<meta name="description" content="Advantages and benefits LISP provides highlighted in this post are simplified traffic engineering, multihoming, overlay tunnel, and AF over AF.
+Locator/ID Separation Protocol (LISP) is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using Endpoint Identifiers (EIDs). Traffic then enters and exits the network through Routing Locators (RLOCs).
+" />
 <meta name="keywords" content="" />
 
   <meta name="robots" content="noodp" />
@@ -79,8 +80,9 @@ LISP Overview Ingress Load Balancing LISP to Non-LISP" />
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="">
-<meta property="og:description" content="Locator/ID Separation Protocol (LISP) is a protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using Endpoint Identifiers (EIDs). Traffic then enters and exits the network through Routing Locators (RLOCs). LISP provides benefits such as simplified traffic engineering, multihoming, and mobility support.
-LISP Overview Ingress Load Balancing LISP to Non-LISP" />
+<meta property="og:description" content="Advantages and benefits LISP provides highlighted in this post are simplified traffic engineering, multihoming, overlay tunnel, and AF over AF.
+Locator/ID Separation Protocol (LISP) is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using Endpoint Identifiers (EIDs). Traffic then enters and exits the network through Routing Locators (RLOCs).
+" />
 <meta property="og:url" content="/posts/lisp/" />
 <meta property="og:site_name" content="Terminal" />
 
@@ -176,10 +178,61 @@ LISP Overview Ingress Load Balancing LISP to Non-LISP" />
   
 
   <div class="post-content"><div>
-        <p><strong>Locator/ID Separation Protocol (LISP)</strong> is a protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using <strong>Endpoint Identifiers (EIDs)</strong>. Traffic then enters and exits the network through <strong>Routing Locators (RLOCs)</strong>. LISP provides benefits such as <strong>simplified traffic engineering</strong>, <strong>multihoming</strong>, and <strong>mobility support</strong>.</p>
-<h2 id="lisp-overview">LISP Overview<a href="#lisp-overview" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+        <p>Advantages and benefits LISP provides highlighted in this post are <strong>simplified traffic engineering</strong>, <strong>multihoming</strong>, <strong>overlay tunnel</strong>, and <strong>AF over AF</strong>.</p>
+<p><strong>Locator/ID Separation Protocol (LISP)</strong> is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using <strong>Endpoint Identifiers (EIDs)</strong>. Traffic then enters and exits the network through <strong>Routing Locators (RLOCs)</strong>.</p>
+<p>For more specific information please check out the sources this post was based off of:
+<a href="">Cisco Configuring LISP</a>
+<a href="">RFC 6830</a></p>
+<h2 id="private-lisp-minimal-configuration">Private LISP Minimal Configuration<a href="#private-lisp-minimal-configuration" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p><strong>Relevant Terminology</strong></p>
+<ul>
+<li>Endpoint Identifiers (EIDs): Server/VM/Host IP address.</li>
+<li>Routing Locators (RLOCs): Router&rsquo;s link IP address.</li>
+<li>Mapping Database (M-DB): Association between EID and RLOC.</li>
+<li>MS/MR: The combined roles seen below.
+<ul>
+<li>Map Server (MS): Holds EID to RLOC mappings.</li>
+<li>Map Resolver (MR): Responds to map-request messages</li>
+</ul>
+</li>
+<li>xTR: The combined roles seen below.
+<ul>
+<li>Ingress Tunnel Router (iTR): Asks Map Resolve for EID to RLOC mapping and is responsible for LISP/UDP packet encapsulation.</li>
+<li>Egress Tunnel Router (eTR): Registers EID/RLOC mapping to Map Server and is responsible for LISP/UDP decapsulation and forwarding the packet to the destination.</li>
+</ul>
+</li>
+</ul>
+<h5 id="setting-the-msmr-and-expected-eid-registration">Setting the MS/MR and expected EID registration<a href="#setting-the-msmr-and-expected-eid-registration" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<pre tabindex="0"><code class="language-IOSv" data-lang="IOSv">MS-MR(config)# router lisp
+MS-MR(config-router-lisp)# ipv4 map-server
+MS-MR(config-router-lisp)# ipv4 map-resolver
+MS-MR(config-router-lisp)# site A
+MS-MR(config-router-lisp-site)# eid-prefix x.x.x.x/24 accept-more-specifics
+MS-MR(config-router-lisp-site)# authentication-key APASS
+MS-MR(config-router-lisp)# site B
+MS-MR(config-router-lisp-site)# eid-prefix x.x.x.x/24 accept-more-specifics
+MS-MR(config-router-lisp-site)# authentication-key BPASS
+</code></pre><ul>
+<li>
+<ul>
+<li>The use of <code>eid-prefix</code> lets our MS/MR know who to expect registration from <code>accept-more-specifics</code> allows our MS/MR to accept registration for more specific prefixes such as /24-/32 within the specific range.</li>
+</ul>
+</li>
+<li>Passwords must be unique from site to site.</li>
+</ul>
+<h5 id="setting-the-xtr-for-a-site">Setting the xTR For A site<a href="#setting-the-xtr-for-a-site" class="hanchor" ariaLabel="Anchor">#</a> </h5>
 <h2 id="ingress-load-balancing">Ingress Load Balancing<a href="#ingress-load-balancing" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 <h2 id="lisp-to-non-lisp">LISP to Non-LISP<a href="#lisp-to-non-lisp" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<p><strong>Relevant Terminology</strong></p>
+<ul>
+<li>PxTR: The combined roles seen below.
+<ul>
+<li>Proxy Ingress Tunnel Router (PiTR): iTR that connects LISP to Non LISP</li>
+<li>Proxy Egress Tunnel Router (PeTR): eTR that connects LISP to Non LISP</li>
+</ul>
+</li>
+</ul>
+<h2 id="af-over-af">AF over AF<a href="#af-over-af" class="hanchor" ariaLabel="Anchor">#</a> </h2>
 
       </div></div>
 
