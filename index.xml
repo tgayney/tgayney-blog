@@ -6,13 +6,28 @@
     <description>Recent content on Terminal</description>
     <generator>Hugo</generator>
     <language>en</language>
+    <lastBuildDate>Tue, 04 Nov 2025 12:00:00 -0500</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Crypto Maps with IPsec</title>
+      <link>/posts/crypto-maps-with-ipsec/</link>
+      <pubDate>Tue, 04 Nov 2025 12:00:00 -0500</pubDate>
+      <guid>/posts/crypto-maps-with-ipsec/</guid>
+      <description>&lt;p&gt;Crypto Map deatils&lt;/p&gt;&#xA;&lt;h2 id=&#34;configuring-crypto-maps-with-ipsec&#34;&gt;Configuring Crypto Maps With IPsec&lt;/h2&gt;&#xA;&lt;h5 id=&#34;setting-isakmp-policy--ike-phase-1&#34;&gt;Setting ISAKMP Policy / IKE Phase 1&lt;/h5&gt;&#xA;&lt;p&gt;Before we can begin configuring &lt;strong&gt;crypto maps&lt;/strong&gt;, we must first define the four key parameters that make up the &lt;strong&gt;ISAKMP (IKE Phase 1) policy&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Encryption&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Hashing&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Authentication&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Diffie–Hellman Group&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;While higher bit-length encryption and stronger algorithms generally provide better security, they also introduce greater processing overhead. When selecting these parameters, it’s important to strike a balance between &lt;strong&gt;security, performance, and compatibility&lt;/strong&gt;. Configuring the most secure ISAKMP policy is possible, but we must also consider whether our VPN peers support the chosen algorithms and whether our device’s CPU can sustain the cryptographic load—especially as the number of IPsec tunnels increases.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>LISP Fundamentals</title>
+      <link>/posts/lisp/</link>
+      <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/lisp/</guid>
+      <description>&lt;p&gt;Advantages and benefits LISP provides highlighted in this post are &lt;strong&gt;simplified traffic engineering&lt;/strong&gt;, &lt;strong&gt;multihoming&lt;/strong&gt;, &lt;strong&gt;overlay tunnel&lt;/strong&gt;, and &lt;strong&gt;AF over AF&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Locator/ID Separation Protocol (LISP)&lt;/strong&gt; is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using &lt;strong&gt;Endpoint Identifiers (EIDs)&lt;/strong&gt;. Traffic then enters and exits the network through &lt;strong&gt;Routing Locators (RLOCs)&lt;/strong&gt;.&lt;/p&gt;</description>
+    </item>
     <item>
       <title></title>
       <link>/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/about/</guid>
-      <description>&lt;p&gt;Hello, my name is Timothy Gayney I&amp;rsquo;m an IT professional with over three years of customer service and IT/NOC Service Desk experience, passionate about technology and helping people solve complex problems. My background in **Computer Networking** and **Cyber Security** has given me a strong technical foundation, complemented by hands-on certifications including **CCNA**, **RHCSA**, and **CompTIA A+**.&lt;/p&gt;&#xA;&lt;p&gt;I’m currently expanding my expertise by studying for the **CCNP ENCOR v1.2**, as I work toward advancing my career in networking. I thrive in environments that challenge me to learn, grow, and deliver reliable technical solutions.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Hello, my name is Timothy Gayney. I&amp;rsquo;m an IT professional with over three years of customer service and IT/NOC Service Desk experience, passionate about technology and helping people solve complex problems. My background in &lt;strong&gt;Computer Networking&lt;/strong&gt; and &lt;strong&gt;Cyber Security&lt;/strong&gt; has given me a strong technical foundation, complemented by hands-on certifications including &lt;strong&gt;CCNA&lt;/strong&gt;, &lt;strong&gt;RHCSA&lt;/strong&gt;, and &lt;strong&gt;CompTIA A+&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;I’m currently expanding my expertise by studying for the &lt;strong&gt;CCNP ENCOR v1.2&lt;/strong&gt;, as I work toward advancing my career in networking. I thrive in environments that challenge me to learn, grow, and deliver reliable technical solutions.&lt;/p&gt;</description>
     </item>
     <item>
       <title></title>
@@ -20,13 +35,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/labs/</guid>
       <description>&lt;p&gt;hyperlinks to labs&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>/posts/lisp/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>/posts/lisp/</guid>
-      <description>&lt;p&gt;Advantages and benefits LISP provides highlighted in this post are &lt;strong&gt;simplified traffic engineering&lt;/strong&gt;, &lt;strong&gt;multihoming&lt;/strong&gt;, &lt;strong&gt;overlay tunnel&lt;/strong&gt;, and &lt;strong&gt;AF over AF&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Locator/ID Separation Protocol (LISP)&lt;/strong&gt; is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using &lt;strong&gt;Endpoint Identifiers (EIDs)&lt;/strong&gt;. Traffic then enters and exits the network through &lt;strong&gt;Routing Locators (RLOCs)&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
