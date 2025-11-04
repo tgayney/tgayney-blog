@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.152.2">
   
-    <title>Terminal</title>
+    <title>Crypto Maps with IPsec :: Terminal</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A simple, retro theme for Hugo" />
+<meta name="description" content="Crypto Map deatils
+Configuring Crypto Maps With IPsec Setting ISAKMP Policy / IKE Phase 1 Before we can begin configuring crypto maps, we must first define the four key parameters that make up the ISAKMP (IKE Phase 1) policy:
+Encryption Hashing Authentication Diffie–Hellman Group While higher bit-length encryption and stronger algorithms generally provide better security, they also introduce greater processing overhead. When selecting these parameters, it’s important to strike a balance between security, performance, and compatibility. Configuring the most secure ISAKMP policy is possible, but we must also consider whether our VPN peers support the chosen algorithms and whether our device’s CPU can sustain the cryptographic load—especially as the number of IPsec tunnels increases.
+" />
 <meta name="keywords" content="" />
 
   <meta name="robots" content="noodp" />
 
-<link rel="canonical" href="/" />
+<link rel="canonical" href="/posts/crypto-maps-with-ipsec/" />
 
 
 
@@ -77,10 +79,13 @@
 
 
 <meta property="og:locale" content="en" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Terminal">
-<meta property="og:description" content="A simple, retro theme for Hugo" />
-<meta property="og:url" content="/" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Crypto Maps with IPsec">
+<meta property="og:description" content="Crypto Map deatils
+Configuring Crypto Maps With IPsec Setting ISAKMP Policy / IKE Phase 1 Before we can begin configuring crypto maps, we must first define the four key parameters that make up the ISAKMP (IKE Phase 1) policy:
+Encryption Hashing Authentication Diffie–Hellman Group While higher bit-length encryption and stronger algorithms generally provide better security, they also introduce greater processing overhead. When selecting these parameters, it’s important to strike a balance between security, performance, and compatibility. Configuring the most secure ISAKMP policy is possible, but we must also consider whether our VPN peers support the chosen algorithms and whether our device’s CPU can sustain the cryptographic load—especially as the number of IPsec tunnels increases.
+" />
+<meta property="og:url" content="/posts/crypto-maps-with-ipsec/" />
 <meta property="og:site_name" content="Terminal" />
 
   <meta property="og:image" content="/og-image.png">
@@ -89,10 +94,10 @@
 <meta property="og:image:height" content="627">
 
 
+  <meta property="article:published_time" content="2025-11-04 12:00:00 -0500 EST" />
 
 
 
-  <link href="/index.xml" rel="alternate" type="application/rss+xml" title="Terminal" />
 
 
 
@@ -164,35 +169,22 @@
 
   <div class="content">
     
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/crypto-maps-with-ipsec/">Crypto Maps with IPsec</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-11-04</time></div>
+
   
-  <div class="posts">
-    
-    
-
-    
-    
-      
-    
-    
-
-    
-      <article class="post on-list">
-        <h2 class="post-title">
-          <a href="/posts/crypto-maps-with-ipsec/">Crypto Maps with IPsec</a>
-        </h2>
-
-        <div class="post-meta"><time class="post-date">2025-11-04</time></div>
-
-        
-
-        
+  
 
 
-        <div class="post-content">
-          
-            <p>Crypto Map deatils</p>
-<h2 id="configuring-crypto-maps-with-ipsec">Configuring Crypto Maps With IPsec</h2>
-<h5 id="setting-isakmp-policy--ike-phase-1">Setting ISAKMP Policy / IKE Phase 1</h5>
+  
+
+  <div class="post-content"><div>
+        <p>Crypto Map deatils</p>
+<h2 id="configuring-crypto-maps-with-ipsec">Configuring Crypto Maps With IPsec<a href="#configuring-crypto-maps-with-ipsec" class="hanchor" ariaLabel="Anchor">#</a> </h2>
+<h5 id="setting-isakmp-policy--ike-phase-1">Setting ISAKMP Policy / IKE Phase 1<a href="#setting-isakmp-policy--ike-phase-1" class="hanchor" ariaLabel="Anchor">#</a> </h5>
 <p>Before we can begin configuring <strong>crypto maps</strong>, we must first define the four key parameters that make up the <strong>ISAKMP (IKE Phase 1) policy</strong>:</p>
 <ul>
 <li><strong>Encryption</strong></li>
@@ -201,52 +193,39 @@
 <li><strong>Diffie–Hellman Group</strong></li>
 </ul>
 <p>While higher bit-length encryption and stronger algorithms generally provide better security, they also introduce greater processing overhead. When selecting these parameters, it’s important to strike a balance between <strong>security, performance, and compatibility</strong>. Configuring the most secure ISAKMP policy is possible, but we must also consider whether our VPN peers support the chosen algorithms and whether our device’s CPU can sustain the cryptographic load—especially as the number of IPsec tunnels increases.</p>
-          
-        </div>
+<pre tabindex="0"><code class="language-IOSv" data-lang="IOSv">Router(config-isakmp)# encryption aes 256
+Router(config-isakmp)# hash sha256
+Router(config-isakmp)# authentication pre-share
+Router(config-isakmp)# group 14
+</code></pre>
+      </div></div>
 
-        
-          <div>
-            <a class="read-more button inline" href="/posts/crypto-maps-with-ipsec/">[Read more]</a>
-          </div>
-        
-      </article>
+  
     
-      <article class="post on-list">
-        <h2 class="post-title">
-          <a href="/posts/lisp/">LISP Fundamentals</a>
-        </h2>
-
-        <div class="post-meta"><time class="post-date">2025-11-04</time></div>
-
-        
-
-        
-
-
-        <div class="post-content">
-          
-            <p>Advantages and benefits LISP provides highlighted in this post are <strong>simplified traffic engineering</strong>, <strong>multihoming</strong>, <strong>overlay tunnel</strong>, and <strong>AF over AF</strong>.</p>
-<p><strong>Locator/ID Separation Protocol (LISP)</strong> is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using <strong>Endpoint Identifiers (EIDs)</strong>. Traffic then enters and exits the network through <strong>Routing Locators (RLOCs)</strong>.</p>
-          
-        </div>
-
-        
-          <div>
-            <a class="read-more button inline" href="/posts/lisp/">[Read more]</a>
-          </div>
-        
-      </article>
-    
-
-    <div class="pagination">
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
   <div class="pagination__buttons">
     
     
     
+      <a href="/posts/lisp/" class="button inline next">
+         [<span class="button__text">LISP Fundamentals</span>] &gt;
+      </a>
+    
   </div>
 </div>
 
-  </div>
+
+  
+
+  
+    
+
+  
+</article>
 
   </div>
 

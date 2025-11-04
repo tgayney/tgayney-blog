@@ -1,10 +1,16 @@
+---
+title: LISP Fundamentals
+date: 2025-11-04
+draft: false
+---
+
 Advantages and benefits LISP provides highlighted in this post are **simplified traffic engineering**, **multihoming**, **overlay tunnel**, and **AF over AF**. 
 
 **Locator/ID Separation Protocol (LISP)** is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using **Endpoint Identifiers (EIDs)**. Traffic then enters and exits the network through **Routing Locators (RLOCs)**.
 
 For more specific information please check out the sources this post was based off of:
-[Cisco Configuring LISP]({{% ref "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_lisp/configuration/xe-3s/irl-xe-3s-book/irl-cfg-lisp.html" %}})
-[RFC 6830]({{% ref "https://datatracker.ietf.org/doc/html/rfc6830" %}})
+[Cisco Configuring LISP]({{% relref "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/iproute_lisp/configuration/xe-3s/irl-xe-3s-book/irl-cfg-lisp.html" %}})
+[RFC 6830]({{% relref "https://datatracker.ietf.org/doc/html/rfc6830" %}})
 
 ## Private LISP Minimal Configuration
 **Relevant Terminology**
