@@ -106,9 +106,10 @@ interface: GigabitEthernet0/1
    current_peer 1.1.1.1 port 4500
 ```
 
-**NAT-D** !![Image Description](/images/IPsec-w-CryptoMap-NAT-D.png)
+**NAT-D** ![Image Description](/images/IPsec-w-CryptoMap-NAT-D.png)
  
- **NAT-T**!![Image Description](/images/IPsec-w-CryptoMap-NAT-T.png)
+ **NAT-T**![Image Description](/images/IPsec-w-CryptoMap-NAT-T.png)
  
 Lab & Packet Captures: [here](/downloads/crypto-maps-w-ipsec.tar)
+
 sha256sum: 47c4eeebe5c177e8e856618f0cd42fff12195acddced7ab83cb0d4a399480c06
