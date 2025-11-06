@@ -6,14 +6,14 @@
     <description>Recent content in Posts on Terminal</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 04 Nov 2025 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 05 Nov 2025 12:00:00 -0500</lastBuildDate>
     <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Crypto Maps with IPsec</title>
       <link>/posts/crypto-maps-with-ipsec/</link>
-      <pubDate>Tue, 04 Nov 2025 12:00:00 -0500</pubDate>
+      <pubDate>Wed, 05 Nov 2025 12:00:00 -0500</pubDate>
       <guid>/posts/crypto-maps-with-ipsec/</guid>
-      <description>&lt;p&gt;Crypto Map deatils&lt;/p&gt;&#xA;&lt;h2 id=&#34;configuring-crypto-maps-with-ipsec&#34;&gt;Configuring Crypto Maps With IPsec&lt;/h2&gt;&#xA;&lt;h5 id=&#34;setting-isakmp-policy--ike-phase-1&#34;&gt;Setting ISAKMP Policy / IKE Phase 1&lt;/h5&gt;&#xA;&lt;p&gt;Before we can begin configuring &lt;strong&gt;crypto maps&lt;/strong&gt;, we must first define the four key parameters that make up the &lt;strong&gt;ISAKMP (IKE Phase 1) policy&lt;/strong&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Encryption&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Hashing&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Authentication&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Diffie–Hellman Group&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;While higher bit-length encryption and stronger algorithms generally provide better security, they also introduce greater processing overhead. When selecting these parameters, it’s important to strike a balance between &lt;strong&gt;security, performance, and compatibility&lt;/strong&gt;. Configuring the most secure ISAKMP policy is possible, but we must also consider whether our VPN peers support the chosen algorithms and whether our device’s CPU can sustain the cryptographic load—especially as the number of IPsec tunnels increases.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;IPsec with Crypto Maps&lt;/strong&gt; provides a method for securing IP communication between networks through encryption and authentication. &lt;strong&gt;ISAKMP (Internet Security Association and Key Management Protocol)&lt;/strong&gt; establishes the &lt;strong&gt;IKE Phase 1 tunnel&lt;/strong&gt; used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.&lt;/p&gt;</description>
     </item>
     <item>
       <title>LISP Fundamentals</title>

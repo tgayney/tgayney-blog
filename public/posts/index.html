@@ -170,7 +170,7 @@
         <h2 class="post-title">
           <a href="/posts/crypto-maps-with-ipsec/">Crypto Maps with IPsec</a>
         </h2>
-        <div class="post-meta"><time class="post-date">2025-11-04</time></div>
+        <div class="post-meta"><time class="post-date">2025-11-05</time></div>
 
         
 
@@ -179,17 +179,7 @@
 
         <div class="post-content">
           
-            <p>Crypto Map deatils</p>
-<h2 id="configuring-crypto-maps-with-ipsec">Configuring Crypto Maps With IPsec</h2>
-<h5 id="setting-isakmp-policy--ike-phase-1">Setting ISAKMP Policy / IKE Phase 1</h5>
-<p>Before we can begin configuring <strong>crypto maps</strong>, we must first define the four key parameters that make up the <strong>ISAKMP (IKE Phase 1) policy</strong>:</p>
-<ul>
-<li><strong>Encryption</strong></li>
-<li><strong>Hashing</strong></li>
-<li><strong>Authentication</strong></li>
-<li><strong>Diffie–Hellman Group</strong></li>
-</ul>
-<p>While higher bit-length encryption and stronger algorithms generally provide better security, they also introduce greater processing overhead. When selecting these parameters, it’s important to strike a balance between <strong>security, performance, and compatibility</strong>. Configuring the most secure ISAKMP policy is possible, but we must also consider whether our VPN peers support the chosen algorithms and whether our device’s CPU can sustain the cryptographic load—especially as the number of IPsec tunnels increases.</p>
+            <p><strong>IPsec with Crypto Maps</strong> provides a method for securing IP communication between networks through encryption and authentication. <strong>ISAKMP (Internet Security Association and Key Management Protocol)</strong> establishes the <strong>IKE Phase 1 tunnel</strong> used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.</p>
           
         </div>
 
