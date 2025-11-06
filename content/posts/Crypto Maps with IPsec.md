@@ -67,12 +67,14 @@ R1(config-if)# crypto map CM_NAME
 | 4    | Responder → Initiator | Key Exchange + Nonce       | Completes Diffie-Hellman exchange                   |
 | 5    | Initiator → Responder | Identification + Hash/Auth | Authenticates initiator                             |
 | 6    | Responder → Initiator | Identification + Hash/Auth | Authenticates responder                             |
+
+
 Overview: Here we can see the ISAKMP SA be negotiated and initial tunnel form the Control-Plane for further negotiation of the IPsec SA.
-![[IPsec-w-CryptoMap.png]]
+![Image Description](/images/IPsec-w-CryptoMap.png)
 1\. Router2 makes the because source traffic from 10.2.5.2 to 10.1.1.10 initiated the IPsec SA. It then provides ISAKMP policy parameters to Router1.
-![[IPsec-w-CryptoMap-Proposal2.png]]
+![Image Description](/images/IPsec-w-CryptoMap-Proposal2.png)
 3\. Router2 starts the DH key exchange and provides the Nonce. After Router1 responds and completes the DH exchange the rest of the ISAKMP SA and IPsec SA take place in an encrypted tunnel and cannot be observed.
-![[IPsec-w-CryptoMap-Key-n-Nonce2.png]]
+![Image Description](/images/IPsec-w-CryptoMap-Key-n-Nonce2.png)
 ##### IPsec NAT-D & NAT-T
  During the **NAT-Discovery (NAT-D)** exchange, each peer calculates a **hash** (typically SHA-1) of its own and the peer’s **IP address + UDP port** information as it knows it locally.
 
@@ -104,8 +106,9 @@ interface: GigabitEthernet0/1
    current_peer 1.1.1.1 port 4500
 ```
 
-**NAT-D** ![[IPsec-w-CryptoMap-NAT-D.png]]
+**NAT-D** !![Image Description](/images/IPsec-w-CryptoMap-NAT-D.png)
  
- **NAT-T**![[IPsec-w-CryptoMap-NAT-T.png]]
+ **NAT-T**!![Image Description](/images/IPsec-w-CryptoMap-NAT-T.png)
  
- Lab & Packet Captures: [here](/downloads/crypto-maps-w-ipsec.tar)
+Lab & Packet Captures: [here](/downloads/crypto-maps-w-ipsec.tar)
+sha256sum: 47c4eeebe5c177e8e856618f0cd42fff12195acddced7ab83cb0d4a399480c06
