@@ -9,6 +9,5 @@ This blog serves as both a **portfolio** and a **learning journal**, where I sha
 I’m always open to connecting with like-minded professionals and exploring new opportunities in the IT and networking space. Feel free to reach out — I’d love to chat!
 
 LinkedIn: [here](https://www.linkedin.com/in/timothy-gayney-007406273/)
-Email: timothygayney99@gmail.com
 
-https://www.linkedin.com/in/timothy-gayney-007406273/
+Email: timothygayney99@gmail.com
