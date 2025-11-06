@@ -265,44 +265,14 @@ R1(config-if)# crypto map CM_NAME
           <td>Identification + Hash/Auth</td>
           <td>Authenticates responder</td>
       </tr>
-      <tr>
-          <td>Overview: Here we can see the ISAKMP SA be negotiated and initial tunnel form the Control-Plane for further negotiation of the IPsec SA.</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>![[IPsec-w-CryptoMap.png]]</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>1. Router2 makes the because source traffic from 10.2.5.2 to 10.1.1.10 initiated the IPsec SA. It then provides ISAKMP policy parameters to Router1.</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>![[IPsec-w-CryptoMap-Proposal2.png]]</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>3. Router2 starts the DH key exchange and provides the Nonce. After Router1 responds and completes the DH exchange the rest of the ISAKMP SA and IPsec SA take place in an encrypted tunnel and cannot be observed.</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>![[IPsec-w-CryptoMap-Key-n-Nonce2.png]]</td>
-          <td></td>
-          <td></td>
-          <td></td>
-      </tr>
   </tbody>
 </table>
+<p>Overview: Here we can see the ISAKMP SA be negotiated and initial tunnel form the Control-Plane for further negotiation of the IPsec SA.
+<img src="/images/IPsec-w-CryptoMap.png" alt="Image Description">
+1. Router2 makes the because source traffic from 10.2.5.2 to 10.1.1.10 initiated the IPsec SA. It then provides ISAKMP policy parameters to Router1.
+<img src="/images/IPsec-w-CryptoMap-Proposal2.png" alt="Image Description">
+3. Router2 starts the DH key exchange and provides the Nonce. After Router1 responds and completes the DH exchange the rest of the ISAKMP SA and IPsec SA take place in an encrypted tunnel and cannot be observed.
+<img src="/images/IPsec-w-CryptoMap-Key-n-Nonce2.png" alt="Image Description"></p>
 <h5 id="ipsec-nat-d--nat-t">IPsec NAT-D &amp; NAT-T<a href="#ipsec-nat-d--nat-t" class="hanchor" ariaLabel="Anchor">#</a> </h5>
 <p>During the <strong>NAT-Discovery (NAT-D)</strong> exchange, each peer calculates a <strong>hash</strong> (typically SHA-1) of its own and the peer’s <strong>IP address + UDP port</strong> information as it knows it locally.</p>
 <p>Each side sends these hashes to the other inside NAT-D payloads.<br>
@@ -328,9 +298,10 @@ interface: GigabitEthernet0/1
    local  ident (addr/mask/prot/port): (10.2.5.0/255.255.255.0/0/0)
    remote ident (addr/mask/prot/port): (10.1.1.0/255.255.255.0/0/0)
    current_peer 1.1.1.1 port 4500
-</code></pre><p><strong>NAT-D</strong> ![[IPsec-w-CryptoMap-NAT-D.png]]</p>
-<p><strong>NAT-T</strong>![[IPsec-w-CryptoMap-NAT-T.png]]</p>
-<p>Lab &amp; Packet Captures: <a href="/downloads/crypto-maps-w-ipsec.tar">here</a></p>
+</code></pre><p><strong>NAT-D</strong> !<img src="/images/IPsec-w-CryptoMap-NAT-D.png" alt="Image Description"></p>
+<p><strong>NAT-T</strong>!<img src="/images/IPsec-w-CryptoMap-NAT-T.png" alt="Image Description"></p>
+<p>Lab &amp; Packet Captures: <a href="/downloads/crypto-maps-w-ipsec.tar">here</a>
+sha256sum: 47c4eeebe5c177e8e856618f0cd42fff12195acddced7ab83cb0d4a399480c06</p>
 
       </div></div>
 
