@@ -6,7 +6,7 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="IPsec with Crypto Maps provides a method for securing IP communication between networks through encryption and authentication. ISAKMP (Internet Security Association and Key Management Protocol) establishes the IKE Phase 1 tunnel used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.
+<meta name="description" content="IPsec with Crypto Maps provides a method for securing IP communication between networks through encryption and authentication commonly referred to as site-to-site. ISAKMP (Internet Security Association and Key Management Protocol) establishes the IKE Phase 1 tunnel used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec/IKE Phase 2 settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.
 " />
 <meta name="keywords" content="" />
 
@@ -79,7 +79,7 @@
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Crypto Maps with IPsec">
-<meta property="og:description" content="IPsec with Crypto Maps provides a method for securing IP communication between networks through encryption and authentication. ISAKMP (Internet Security Association and Key Management Protocol) establishes the IKE Phase 1 tunnel used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.
+<meta property="og:description" content="IPsec with Crypto Maps provides a method for securing IP communication between networks through encryption and authentication commonly referred to as site-to-site. ISAKMP (Internet Security Association and Key Management Protocol) establishes the IKE Phase 1 tunnel used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec/IKE Phase 2 settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.
 " />
 <meta property="og:url" content="/posts/crypto-maps-with-ipsec/" />
 <meta property="og:site_name" content="Terminal" />
@@ -178,10 +178,10 @@
   
 
   <div class="post-content"><div>
-        <p><strong>IPsec with Crypto Maps</strong> provides a method for securing IP communication between networks through encryption and authentication. <strong>ISAKMP (Internet Security Association and Key Management Protocol)</strong> establishes the <strong>IKE Phase 1 tunnel</strong> used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.</p>
+        <p><strong>IPsec with Crypto Maps</strong> provides a method for securing IP communication between networks through encryption and authentication commonly referred to as site-to-site. <strong>ISAKMP (Internet Security Association and Key Management Protocol)</strong> establishes the <strong>IKE Phase 1 tunnel</strong> used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds <strong>IPsec/IKE Phase 2</strong> settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.</p>
 <p>This approach enables administrators to selectively protect traffic, maintain flexible security policies, and ensure confidentiality and integrity across untrusted networks. By combining ISAKMP/IKE for key exchange with Crypto Maps for policy enforcement, IPsec delivers a robust and standards-based foundation for secure site-to-site connectivity.</p>
 <h4 id="configuring-crypto-maps-with-ipsec">Configuring Crypto Maps With IPsec<a href="#configuring-crypto-maps-with-ipsec" class="hanchor" ariaLabel="Anchor">#</a> </h4>
-<h5 id="configuring-isakmp-policy--ike-phase-1">Configuring ISAKMP Policy / IKE Phase 1<a href="#configuring-isakmp-policy--ike-phase-1" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+<h5 id="configuring-the-isakmp-policy-that-is-ike-phase-1">Configuring The ISAKMP Policy That Is IKE Phase 1<a href="#configuring-the-isakmp-policy-that-is-ike-phase-1" class="hanchor" ariaLabel="Anchor">#</a> </h5>
 <p>Before we can begin configuring <strong>crypto maps</strong>, we must first define the four key parameters that make up the <strong>ISAKMP (IKE Phase 1) policy</strong>:</p>
 <ul>
 <li><strong>Encryption</strong></li>
@@ -198,9 +198,14 @@ R1(config-isakmp)# authentication pre-share
 R1(config-isakmp)# group 14
 !
 R1(config)# crypto isakmp key cisco123 address 2.2.2.2
-</code></pre><h5 id="configuring-ipsec-policy--ike-phase-2">Configuring IPsec Policy / IKE Phase 2<a href="#configuring-ipsec-policy--ike-phase-2" class="hanchor" ariaLabel="Anchor">#</a> </h5>
+</code></pre><h5 id="configuring-ipsec-transform-set-and-crypto-map-that-make-up-ike-phase-2">Configuring IPsec Transform-Set and Crypto Map That Make Up IKE Phase 2<a href="#configuring-ipsec-transform-set-and-crypto-map-that-make-up-ike-phase-2" class="hanchor" ariaLabel="Anchor">#</a> </h5>
 <p>Before we&rsquo;re able to proceed we must configure our <strong>Transform-Set</strong> this will specify the encryption algorithm and hashing in our <strong>Data Plane</strong>, additional the mode of our encapsulation being <strong>Tunnel</strong> vs <strong>Transport</strong> by default encapsulation will operate in Tunnel mode so we will leave alone.
 (Control Plane and Data Plane encryption algorithms do not have to match but ISAKMP &amp; IPsec policies must match between peers)</p>
+<ul>
+<li>Encryption</li>
+<li>Hashing</li>
+<li>Encapsulation Mode</li>
+</ul>
 <p>After the preceding has been accomplished we will configure an <strong>Extended ACL</strong> to specify what source traffic should be encrypted to a destination:</p>
 <pre tabindex="0"><code class="language-IOSv" data-lang="IOSv">R1(config)# crypto ipsec transform-set TS_NAME esp-aes 192 esp-sha-hmac 
 !
@@ -218,90 +223,8 @@ R1(config-crypto-map)#match address IPSEC_ACL
 R1(config)# crypto map CM_NAME local-address loopback0
 !
 R1(config-if)# crypto map CM_NAME
-</code></pre><h5 id="ike-phase-1--2-packet-inspection">IKE Phase 1 &amp; 2 Packet Inspection<a href="#ike-phase-1--2-packet-inspection" class="hanchor" ariaLabel="Anchor">#</a> </h5>
-<table>
-  <thead>
-      <tr>
-          <th>Step</th>
-          <th>Direction</th>
-          <th>Payloads</th>
-          <th>Purpose</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1</td>
-          <td>Initiator → Responder</td>
-          <td>SA proposal</td>
-          <td>Proposes encryption, hash, auth, DH group, lifetime</td>
-      </tr>
-      <tr>
-          <td>2</td>
-          <td>Responder → Initiator</td>
-          <td>SA response</td>
-          <td>Chooses acceptable policy</td>
-      </tr>
-      <tr>
-          <td>3</td>
-          <td>Initiator → Responder</td>
-          <td>Key Exchange + Nonce</td>
-          <td>Begins Diffie-Hellman key exchange</td>
-      </tr>
-      <tr>
-          <td>4</td>
-          <td>Responder → Initiator</td>
-          <td>Key Exchange + Nonce</td>
-          <td>Completes Diffie-Hellman exchange</td>
-      </tr>
-      <tr>
-          <td>5</td>
-          <td>Initiator → Responder</td>
-          <td>Identification + Hash/Auth</td>
-          <td>Authenticates initiator</td>
-      </tr>
-      <tr>
-          <td>6</td>
-          <td>Responder → Initiator</td>
-          <td>Identification + Hash/Auth</td>
-          <td>Authenticates responder</td>
-      </tr>
-  </tbody>
-</table>
-<p>Overview: Here we can see the ISAKMP SA be negotiated and initial tunnel form the Control-Plane for further negotiation of the IPsec SA.
-<img src="/images/IPsec-w-CryptoMap.png" alt="Image Description">
-1. Router2 makes the because source traffic from 10.2.5.2 to 10.1.1.10 initiated the IPsec SA. It then provides ISAKMP policy parameters to Router1.
-<img src="/images/IPsec-w-CryptoMap-Proposal2.png" alt="Image Description">
-3. Router2 starts the DH key exchange and provides the Nonce. After Router1 responds and completes the DH exchange the rest of the ISAKMP SA and IPsec SA take place in an encrypted tunnel and cannot be observed.
-<img src="/images/IPsec-w-CryptoMap-Key-n-Nonce2.png" alt="Image Description"></p>
-<h5 id="ipsec-nat-d--nat-t">IPsec NAT-D &amp; NAT-T<a href="#ipsec-nat-d--nat-t" class="hanchor" ariaLabel="Anchor">#</a> </h5>
-<p>During the <strong>NAT-Discovery (NAT-D)</strong> exchange, each peer calculates a <strong>hash</strong> (typically SHA-1) of its own and the peer’s <strong>IP address + UDP port</strong> information as it knows it locally.</p>
-<p>Each side sends these hashes to the other inside NAT-D payloads.<br>
-Then, upon receiving them, each peer recomputes what the hashes <strong>should</strong> be based on the IP/port values <strong>it actually sees in the received packet headers</strong>.</p>
-<p>If those hashes <strong>don’t match</strong>, it means something in the path (a NAT device) has changed the source or destination IP/port. Once this is detected the peers unable NAT Traversal (UDP 4500)his can be observed below:</p>
-<pre tabindex="0"><code>R2# show crypto isakmp sa detail
-
-Codes: N - NAT-traversal
-
-IPv4 Crypto ISAKMP SA
-
-C-id  Local           Remote          I-VRF  Status Encr Hash   Auth DH Lifetime Cap.
-
-1013  2.2.2.2         1.1.1.1                ACTIVE aes  sha384 psk  14 23:47:45 N   
-       Engine-id:Conn-id =  SW:13
-
-R2# show crypto ips sa detail   
-
-interface: GigabitEthernet0/1
-    Crypto map tag: CM1, local addr 2.2.2.2
-
-   protected vrf: (none)
-   local  ident (addr/mask/prot/port): (10.2.5.0/255.255.255.0/0/0)
-   remote ident (addr/mask/prot/port): (10.1.1.0/255.255.255.0/0/0)
-   current_peer 1.1.1.1 port 4500
-</code></pre><p><strong>NAT-D</strong> <img src="/images/IPsec-w-CryptoMap-NAT-D.png" alt="Image Description"></p>
-<p><strong>NAT-T</strong><img src="/images/IPsec-w-CryptoMap-NAT-T.png" alt="Image Description"></p>
-<p>Lab &amp; Packet Captures: <a href="/downloads/crypto-maps-w-ipsec.tar">here</a></p>
-<p>sha256sum: 47c4eeebe5c177e8e856618f0cd42fff12195acddced7ab83cb0d4a399480c06</p>
+</code></pre><p>Lab: <a href="/downloads/ipsec_with_cryptomap.tar">here</a></p>
+<p>sha256sum:</p>
 
       </div></div>
 
@@ -314,9 +237,15 @@ interface: GigabitEthernet0/1
   </div>
   <div class="pagination__buttons">
     
+      <a href="/posts/an-overview-of-ipsec/" class="button inline prev">
+        &lt; [<span class="button__text">An Overview of IPsec</span>]
+      </a>
     
     
-      <a href="/posts/lisp/" class="button inline next">
+      ::
+    
+    
+      <a href="/posts/lisp-draft/" class="button inline next">
          [<span class="button__text">LISP Fundamentals</span>] &gt;
       </a>
     

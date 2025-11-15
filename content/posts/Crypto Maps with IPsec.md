@@ -3,12 +3,12 @@ title: Crypto Maps with IPsec
 date: 2025-11-05T12:00:00-05:00
 draft: false
 ---
-**IPsec with Crypto Maps** provides a method for securing IP communication between networks through encryption and authentication. **ISAKMP (Internet Security Association and Key Management Protocol)** establishes the **IKE Phase 1 tunnel** used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.
+**IPsec with Crypto Maps** provides a method for securing IP communication between networks through encryption and authentication commonly referred to as site-to-site. **ISAKMP (Internet Security Association and Key Management Protocol)** establishes the **IKE Phase 1 tunnel** used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds **IPsec/IKE Phase 2** settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.
 
 This approach enables administrators to selectively protect traffic, maintain flexible security policies, and ensure confidentiality and integrity across untrusted networks. By combining ISAKMP/IKE for key exchange with Crypto Maps for policy enforcement, IPsec delivers a robust and standards-based foundation for secure site-to-site connectivity.
 
 #### Configuring Crypto Maps With IPsec
-##### Configuring ISAKMP Policy / IKE Phase 1
+##### Configuring The ISAKMP Policy That Is IKE Phase 1
 Before we can begin configuring **crypto maps**, we must first define the four key parameters that make up the **ISAKMP (IKE Phase 1) policy**:
 - **Encryption**
 - **Hashing**
@@ -29,9 +29,13 @@ R1(config)# crypto isakmp key cisco123 address 2.2.2.2
 ```
 
 
-##### Configuring IPsec Policy / IKE Phase 2
+##### Configuring IPsec Transform-Set and Crypto Map That Make Up IKE Phase 2
 Before we're able to proceed we must configure our **Transform-Set** this will specify the encryption algorithm and hashing in our **Data Plane**, additional the mode of our encapsulation being **Tunnel** vs **Transport** by default encapsulation will operate in Tunnel mode so we will leave alone. 
 (Control Plane and Data Plane encryption algorithms do not have to match but ISAKMP & IPsec policies must match between peers)
+- Encryption
+- Hashing
+- Encapsulation Mode
+
 
 After the preceding has been accomplished we will configure an **Extended ACL** to specify what source traffic should be encrypted to a destination:
 ```IOSv
@@ -58,58 +62,6 @@ R1(config)# crypto map CM_NAME local-address loopback0
 R1(config-if)# crypto map CM_NAME
 ```
 
-##### IKE Phase 1 & 2 Packet Inspection
-| Step | Direction             | Payloads                   | Purpose                                             |
-| ---- | --------------------- | -------------------------- | --------------------------------------------------- |
-| 1    | Initiator → Responder | SA proposal                | Proposes encryption, hash, auth, DH group, lifetime |
-| 2    | Responder → Initiator | SA response                | Chooses acceptable policy                           |
-| 3    | Initiator → Responder | Key Exchange + Nonce       | Begins Diffie-Hellman key exchange                  |
-| 4    | Responder → Initiator | Key Exchange + Nonce       | Completes Diffie-Hellman exchange                   |
-| 5    | Initiator → Responder | Identification + Hash/Auth | Authenticates initiator                             |
-| 6    | Responder → Initiator | Identification + Hash/Auth | Authenticates responder                             |
+Lab: [here](/downloads/ipsec_with_cryptomap.tar)
 
-
-Overview: Here we can see the ISAKMP SA be negotiated and initial tunnel form the Control-Plane for further negotiation of the IPsec SA.
-![Image Description](/images/IPsec-w-CryptoMap.png)
-1\. Router2 makes the because source traffic from 10.2.5.2 to 10.1.1.10 initiated the IPsec SA. It then provides ISAKMP policy parameters to Router1.
-![Image Description](/images/IPsec-w-CryptoMap-Proposal2.png)
-3\. Router2 starts the DH key exchange and provides the Nonce. After Router1 responds and completes the DH exchange the rest of the ISAKMP SA and IPsec SA take place in an encrypted tunnel and cannot be observed.
-![Image Description](/images/IPsec-w-CryptoMap-Key-n-Nonce2.png)
-##### IPsec NAT-D & NAT-T
- During the **NAT-Discovery (NAT-D)** exchange, each peer calculates a **hash** (typically SHA-1) of its own and the peer’s **IP address + UDP port** information as it knows it locally.
-
-Each side sends these hashes to the other inside NAT-D payloads.  
-Then, upon receiving them, each peer recomputes what the hashes **should** be based on the IP/port values **it actually sees in the received packet headers**.
-
-If those hashes **don’t match**, it means something in the path (a NAT device) has changed the source or destination IP/port. Once this is detected the peers unable NAT Traversal (UDP 4500)his can be observed below:
-
-```
-R2# show crypto isakmp sa detail
-
-Codes: N - NAT-traversal
-
-IPv4 Crypto ISAKMP SA
-
-C-id  Local           Remote          I-VRF  Status Encr Hash   Auth DH Lifetime Cap.
-
-1013  2.2.2.2         1.1.1.1                ACTIVE aes  sha384 psk  14 23:47:45 N   
-       Engine-id:Conn-id =  SW:13
-
-R2# show crypto ips sa detail   
-
-interface: GigabitEthernet0/1
-    Crypto map tag: CM1, local addr 2.2.2.2
-
-   protected vrf: (none)
-   local  ident (addr/mask/prot/port): (10.2.5.0/255.255.255.0/0/0)
-   remote ident (addr/mask/prot/port): (10.1.1.0/255.255.255.0/0/0)
-   current_peer 1.1.1.1 port 4500
-```
-
-**NAT-D** ![Image Description](/images/IPsec-w-CryptoMap-NAT-D.png)
- 
- **NAT-T**![Image Description](/images/IPsec-w-CryptoMap-NAT-T.png)
- 
-Lab & Packet Captures: [here](/downloads/crypto-maps-w-ipsec.tar)
-
-sha256sum: 47c4eeebe5c177e8e856618f0cd42fff12195acddced7ab83cb0d4a399480c06
+sha256sum: 

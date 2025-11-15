@@ -6,20 +6,27 @@
     <description>Recent content on Terminal</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 05 Nov 2025 12:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Overview of IPsec</title>
+      <link>/posts/an-overview-of-ipsec/</link>
+      <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/an-overview-of-ipsec/</guid>
+      <description>&lt;p&gt;IPsec (Internet Protocol Security) is a suite of protocols that secures IP communications by providing encryption, authentication, and integrity directly at the network layer. IPsec requires both peers to agree on how to secure traffic, it uses a management framework called ISAKMP (Internet Security Association and Key Management Protocol), which defines how peers negotiate and manage Security Associations (SAs) the policies and keys used to protect control plane traffic to continue negotiation to secure data plane traffic. ISAKMP provides the structure, IKEv1 performs the key exchange and negotiation for the control plane, and IPsec enforces the security for the data plane.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Crypto Maps with IPsec</title>
       <link>/posts/crypto-maps-with-ipsec/</link>
       <pubDate>Wed, 05 Nov 2025 12:00:00 -0500</pubDate>
       <guid>/posts/crypto-maps-with-ipsec/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;IPsec with Crypto Maps&lt;/strong&gt; provides a method for securing IP communication between networks through encryption and authentication. &lt;strong&gt;ISAKMP (Internet Security Association and Key Management Protocol)&lt;/strong&gt; establishes the &lt;strong&gt;IKE Phase 1 tunnel&lt;/strong&gt; used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds IPsec settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;strong&gt;IPsec with Crypto Maps&lt;/strong&gt; provides a method for securing IP communication between networks through encryption and authentication commonly referred to as site-to-site. &lt;strong&gt;ISAKMP (Internet Security Association and Key Management Protocol)&lt;/strong&gt; establishes the &lt;strong&gt;IKE Phase 1 tunnel&lt;/strong&gt; used to authenticate peers and negotiate the parameters for further communication. Crypto Maps act as the policy framework that binds &lt;strong&gt;IPsec/IKE Phase 2&lt;/strong&gt; settings such as peers, transform sets, and access lists to a physical (sub)interface. When traffic matches the defined crypto ACL, it is encrypted according to the transform set and sent to the specified peer through an IPsec tunnel.&lt;/p&gt;</description>
     </item>
     <item>
       <title>LISP Fundamentals</title>
-      <link>/posts/lisp/</link>
+      <link>/posts/lisp-draft/</link>
       <pubDate>Tue, 04 Nov 2025 00:00:00 +0000</pubDate>
-      <guid>/posts/lisp/</guid>
+      <guid>/posts/lisp-draft/</guid>
       <description>&lt;p&gt;Advantages and benefits LISP provides highlighted in this post are &lt;strong&gt;simplified traffic engineering&lt;/strong&gt;, &lt;strong&gt;multihoming&lt;/strong&gt;, &lt;strong&gt;overlay tunnel&lt;/strong&gt;, and &lt;strong&gt;AF over AF&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Locator/ID Separation Protocol (LISP)&lt;/strong&gt; is an IP in UDP tunnel protocol that separates the identity of a device from its location on the network. It allows sites to create tunnels between them and identifies devices using &lt;strong&gt;Endpoint Identifiers (EIDs)&lt;/strong&gt;. Traffic then enters and exits the network through &lt;strong&gt;Routing Locators (RLOCs)&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
@@ -35,6 +42,20 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>/labs/</guid>
       <description>&lt;p&gt;hyperlinks to labs&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>/posts/gre-over-ipsec-draft/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/posts/gre-over-ipsec-draft/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title></title>
+      <link>/posts/ipsec-over-dmvpn-draft/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/posts/ipsec-over-dmvpn-draft/</guid>
+      <description></description>
     </item>
   </channel>
 </rss>
