@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VPN on Terminal</title>
+    <link>/tags/vpn/</link>
+    <description>Recent content in VPN on Terminal</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/tags/vpn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>An Overview of IPsec</title>
+      <link>/posts/an-overview-of-ipsec/</link>
+      <pubDate>Wed, 12 Nov 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/an-overview-of-ipsec/</guid>
+      <description>&lt;p&gt;IPsec (Internet Protocol Security) is a suite of protocols that secures IP communications by providing encryption, authentication, and integrity directly at the network layer. IPsec requires both peers to agree on how to secure traffic, it uses a management framework called ISAKMP (Internet Security Association and Key Management Protocol), which defines how peers negotiate and manage Security Associations (SAs) the policies and keys used to protect control plane traffic to continue negotiation to secure data plane traffic. ISAKMP provides the structure, IKEv1 performs the key exchange and negotiation for the control plane, and IPsec enforces the security for the data plane.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

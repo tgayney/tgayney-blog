@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>An Overview of IPsec :: Terminal</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IPsec (Internet Protocol Security) is a suite of protocols that secures IP communications by providing encryption, authentication, and integrity directly at the network layer. IPsec requires both peers to agree on how to secure traffic, it uses a management framework called ISAKMP (Internet Security Association and Key Management Protocol), which defines how peers negotiate and manage Security Associations (SAs) the policies and keys used to protect control plane traffic to continue negotiation to secure data plane traffic. ISAKMP provides the structure, IKEv1 performs the key exchange and negotiation for the control plane, and IPsec enforces the security for the data plane.
+" />
+<meta name="keywords" content="" />
+
+  <meta name="robots" content="noodp" />
+
+<link rel="canonical" href="/posts/an-overview-of-ipsec/" />
+
+
+
+
+
+  
+  <link rel="stylesheet" href="/css/buttons.min.86f6b4c106b6c6eb690ae5203d36b442c1f66f718ff4e8164fa86cf6c61ad641.css">
+
+  
+  <link rel="stylesheet" href="/css/code.min.d529ea4b2fb8d34328d7d31afc5466d5f7bc2f0bc9abdd98b69385335d7baee4.css">
+
+  
+  <link rel="stylesheet" href="/css/fonts.min.5bb7ed13e1d00d8ff39ea84af26737007eb5051b157b86fc24487c94f3dc8bbe.css">
+
+  
+  <link rel="stylesheet" href="/css/footer.min.eb8dfc2c6a7eafa36cd3ba92d63e69e849e2200e0002a228d137f236b09ecd75.css">
+
+  
+  <link rel="stylesheet" href="/css/gist.min.a751e8b0abe1ba8bc53ced52a38b19d8950fe78ca29454ea8c2595cf26aad5c0.css">
+
+  
+  <link rel="stylesheet" href="/css/header.min.75c7eb0e2872d95ff48109c6647d0223a38db52e2561dd87966eb5fc7c6bdac6.css">
+
+  
+  <link rel="stylesheet" href="/css/main.min.36833afd348409fc6c3d09d0897c5833d9d5bf1ff31f5e60ea3ee42ce2b1268c.css">
+
+  
+  <link rel="stylesheet" href="/css/menu.min.3c17467ebeb3d38663dce68f71f519901124fa5cbb4519b2fb0667a21e9aca39.css">
+
+  
+  <link rel="stylesheet" href="/css/pagination.min.bbb986dbce00a5ce5aca0504b7925fc1c581992a4bf57f163e5d69cc1db7d836.css">
+
+  
+  <link rel="stylesheet" href="/css/post.min.e6dddd258e64c83e05cec0cd49c05216742d42fc8ecbfbe6b67083412b609bd3.css">
+
+  
+  <link rel="stylesheet" href="/css/syntax.min.a0773cce9310cb6d8ed23e50f005448facf29a53001b57e038828daa466b25c0.css">
+
+  
+  <link rel="stylesheet" href="/css/terminal.min.c7873912ac7c0556a135f48add411ddd7900a8dad51e1ef66e7fa5c434686224.css">
+
+  
+  <link rel="stylesheet" href="/css/terms.min.b81791663c3790e738e571cdbf802312390d30e4b1d8dc9d814a5b5454d0ac11.css">
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="An Overview of IPsec">
+<meta property="og:description" content="IPsec (Internet Protocol Security) is a suite of protocols that secures IP communications by providing encryption, authentication, and integrity directly at the network layer. IPsec requires both peers to agree on how to secure traffic, it uses a management framework called ISAKMP (Internet Security Association and Key Management Protocol), which defines how peers negotiate and manage Security Associations (SAs) the policies and keys used to protect control plane traffic to continue negotiation to secure data plane traffic. ISAKMP provides the structure, IKEv1 performs the key exchange and negotiation for the control plane, and IPsec enforces the security for the data plane.
+" />
+<meta property="og:url" content="/posts/an-overview-of-ipsec/" />
+<meta property="og:site_name" content="Terminal" />
+
+  <meta property="og:image" content="/og-image.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2025-11-12 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+
+<div class="container">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    Terminal
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/labs">Labs</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about" >About</a></li>
+        
+      
+        
+          <li><a href="/labs" >Labs</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/an-overview-of-ipsec/">An Overview of IPsec</a>
+  </h1>
+  <div class="post-meta"><time class="post-date">2025-11-12</time></div>
+
+  
+    <span class="post-tags">
+      
+      #<a href="/tags/networking/">networking</a>&nbsp;
+      
+      #<a href="/tags/vpn/">VPN</a>&nbsp;
+      
+      #<a href="/tags/ipsec/">IPsec</a>&nbsp;
+      
+      #<a href="/tags/ike/">IKE</a>&nbsp;
+      
+    </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>IPsec (Internet Protocol Security) is a suite of protocols that secures IP communications by providing encryption, authentication, and integrity directly at the network layer. IPsec requires both peers to agree on how to secure traffic, it uses a management framework called ISAKMP (Internet Security Association and Key Management Protocol), which defines how peers negotiate and manage Security Associations (SAs) the policies and keys used to protect control plane traffic to continue negotiation to secure data plane traffic. ISAKMP provides the structure, IKEv1 performs the key exchange and negotiation for the control plane, and IPsec enforces the security for the data plane.</p>
+<h3 id="isakmp--ikev1-phase-1">ISAKMP / IKEv1 Phase 1<a href="#isakmp--ikev1-phase-1" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Phase 1 will be performed in one of two modes being <strong>Main Mode (MM)</strong> or <strong>Aggressive Mode (AM)</strong>.  <strong>MM</strong> is more preferred today as the 3 additional messages of overhead is negligible for modern day processing. This doesn&rsquo;t mean <strong>AM</strong> is obsolete as it still find use in Remote-Access with key-based authentication solutions, where IKE Identities are sent in the clear.</p>
+<p><strong>MM</strong> is more secure due to that it secures the entire Authentication Exchange including IKE Identities by using 6 messages for all three exchanges described below:</p>
+<ol>
+<li>Initiator sends the first message to propose its ISAKMP policy. (Cleartext)</li>
+<li>Responder replies with a selected policy that its capable of and agrees with based on priority. (Cleartext)</li>
+<li>Initiator begin the Diffie-Hellman Group exchange. (Cleartext)</li>
+<li>Responder begin the Diffie-Hellman Group exchange. (Cleartext)</li>
+<li>Initiator begins authentication exchange including the hash and IKE identity. (Encrypted)</li>
+<li>Responder begins authentication exchange including the hash and IKE identity. (Encrypted)</li>
+</ol>
+<p><strong>AM</strong> is less secure due to that Authentication exchange &amp; IKE identities go unprotected using only 3 messages described below:</p>
+<ol>
+<li>Initiator sends the first message containing ISAKMP Policy, Diffie-Hellman Group, and IKE identity. (Cleartext)</li>
+<li>Responder replies with a selected policy that its capable of and agrees with based on priority. Additionally the Responder includes an authentication hash for integrity. (Cleartext)</li>
+<li>Initiator sends it&rsquo;s authentication hash. (Depends on implementation)</li>
+</ol>
+<p>IKEv1 Phase 1 Policies must match between the VPN peers for the following parameters:</p>
+<ul>
+<li>Encryption: DES, 3DES, AES (128, 192, 256)</li>
+<li>Hash: MD5, SHA-1, SHA-2 (256, 384, 512)</li>
+<li>Diffie-Hellman Group: 1,2,5,14,15,16, 19, 20, and 24</li>
+<li>Authentication Method: PSK, PKI (RSA or ECDSA)</li>
+<li>(OPTIONAL) Lifetime</li>
+</ul>
+<h3 id="ipsec--ikev1-phase-2">IPsec / IKEv1 Phase 2<a href="#ipsec--ikev1-phase-2" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Phase 2 will be always be performed in <strong>Quick Mode (QM)</strong> to define the specific encryption and integrity parameters used to protect the data plane.</p>
+<p>IKEv1 Phase 2 negotiation requires the following parameters must match between peers:</p>
+<ul>
+<li>Transform-Set
+<ul>
+<li>Encryption: ESP</li>
+<li>Hashing: ESP or AH</li>
+<li>Encapsulation Mode: Tunnel (default) or Transport (Requires end to end communication)</li>
+</ul>
+</li>
+<li>Proxy Identities: Describes the traffic to be encrypted typically via an ACL (0.0.0.0/0, GRE/47, etc)
+<ul>
+<li>This should be a mirror image between peers.</li>
+</ul>
+</li>
+<li>(OPTIONAL) Perfect Forward Secrecy (PFS): Enables DH exchange to derive a fresh set of symmetric keys.</li>
+</ul>
+<h3 id="ike-packet-capture">IKE Packet Capture<a href="#ike-packet-capture" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>Overview: Here we can see the ISAKMP SA be negotiated and initial tunnel form the Control-Plane for further negotiation of the IPsec SA.
+<img src="/images/IPsec-w-CryptoMap.png" alt="Image Description">
+1. Router2 makes the because source traffic from 10.2.5.2 to 10.1.1.10 initiated the IPsec SA. It then provides ISAKMP policy parameters to Router1.
+<img src="/images/IPsec-w-CryptoMap-Proposal2.png" alt="Image Description">
+3. Router2 starts the DH key exchange and provides the Nonce. After Router1 responds and completes the DH exchange the rest of the ISAKMP SA and IPsec SA take place in an encrypted tunnel and cannot be observed.
+<img src="/images/IPsec-w-CryptoMap-Key-n-Nonce2.png" alt="Image Description"></p>
+<h3 id="nat-d--nat-t">NAT-D &amp; NAT-T<a href="#nat-d--nat-t" class="hanchor" ariaLabel="Anchor">#</a> </h3>
+<p>During the <strong>NAT-Discovery (NAT-D)</strong> exchange, each peer calculates a <strong>hash</strong> (typically SHA-1) of its own and the peer’s <strong>IP address + UDP port</strong> information as it knows it locally.</p>
+<p>Each side sends these hashes to the other inside NAT-D payloads.<br>
+Then, upon receiving them, each peer recomputes what the hashes <strong>should</strong> be based on the IP/port values <strong>it actually sees in the received packet headers</strong>.</p>
+<p>If those hashes <strong>don’t match</strong>, it means something in the path (a NAT device) has changed the source or destination IP/port. Once this is detected the peers unable NAT Traversal (UDP 4500)his can be observed below:</p>
+<pre tabindex="0"><code>R2# show crypto isakmp sa detail
+
+Codes: N - NAT-traversal
+
+IPv4 Crypto ISAKMP SA
+
+C-id  Local           Remote          I-VRF  Status Encr Hash   Auth DH Lifetime Cap.
+
+1013  2.2.2.2         1.1.1.1                ACTIVE aes  sha384 psk  14 23:47:45 N   
+       Engine-id:Conn-id =  SW:13
+
+R2# show crypto ips sa detail   
+
+interface: GigabitEthernet0/1
+    Crypto map tag: CM1, local addr 2.2.2.2
+
+   protected vrf: (none)
+   local  ident (addr/mask/prot/port): (10.2.5.0/255.255.255.0/0/0)
+   remote ident (addr/mask/prot/port): (10.1.1.0/255.255.255.0/0/0)
+   current_peer 1.1.1.1 port 4500
+</code></pre><p><strong>NAT-D Packet Capture</strong>
+UDP PORT 500![[IPsec-w-CryptoMap-NAT-D.png]]
+<strong>NAT-T Packet Capture</strong>
+UDP PORT 4500<img src="/images/IPsec-w-CryptoMap-NAT-T.png" alt="Image Description"></p>
+<p>Packet Captures: <a href="/downloads/an_overview_of_ipsec.tar">here</a></p>
+<p>SHA256:</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+  <div class="pagination__title">
+    <span class="pagination__title-h">Read other posts</span>
+    <hr />
+  </div>
+  <div class="pagination__buttons">
+    
+    
+    
+      <a href="/posts/crypto-maps-with-ipsec/" class="button inline next">
+         [<span class="button__text">Crypto Maps with IPsec</span>] &gt;
+      </a>
+    
+  </div>
+</div>
+
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright">
+        <span>© 2025 Powered by <a href="https://gohugo.io">Hugo</a></span>
+    
+      <span>:: <a href="https://github.com/panr/hugo-theme-terminal" target="_blank">Theme</a> made by <a href="https://github.com/panr" target="_blank">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
